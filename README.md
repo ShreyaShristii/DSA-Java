@@ -1,2 +1,8 @@
-# DSA-Java
-Tracking my journey through Data Structures and Algorithms with daily problem-solving and documentation in Java.
+My Java DSA Journey
+Personal repository for tracking my progress, practice, and learning in Data Structures and Algorithms using Java.
+ 
+My Goals
+-Understand the core logic of every major data structure.
+-Daily application of algorithmic theory to practical problem-solving to maintain high code fluency.
+
+
