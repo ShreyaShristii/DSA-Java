@@ -83,6 +83,47 @@ public class TreeOperations {
         return root;
         
     }
+    static Node findNode(Node root,int key){
+        if(root==null)return null;
+        if(root.data==key)return root;
+        if(root.data>key)return findNode(root.left,key);
+        else{
+            return findNode(root.right,key);
+        }
+    }
+    static Node findLeft(Node root){
+        //Node dum=new Node(-1);
+        if(root==null) return null;
+        while(root.left!=null){
+            root=root.left;
+        }
+        //dum=root;
+        return root;
+    }
+    static Node deleteCurrent(Node root){
+        if(root.left==null)return root.right;
+        if(root.right==null)return root.left;
+        Node successor=findLeft(root.right);
+        root.data=successor.data;
+        root.right=delete(root.right,successor.data);
+        return root;
+    }
+    static Node delete(Node root,int key){
+        if(root == null) return null;
+
+    if(key < root.data){
+        root.left = delete(root.left, key);
+    }
+    else if(key > root.data){
+        root.right = delete(root.right, key);
+    }
+    else{
+        // node found
+        return deleteCurrent(root);
+    }
+
+    return root;
+    }
     public static void main(String[] args) {
         int[] values = {10, 5, 15, 3, 7, 12, 18, 1, 4,5,23,2,5};
         int[] a={1,2,3,4,5,6};
