@@ -21,6 +21,7 @@ public class LLImplementation {
         System.out.print("Original Linked Lists was: ");
         l1.print();
         System.out.println(l1.mid(l1.head).data);
+        System.out.println(l1.lr(l1.head,2,5));
         LinkedList a=new LinkedList();
         a.insert(9);
         a.insert(9);
@@ -145,6 +146,22 @@ class LinkedList {
         result=n;
     }
     return result;
+}
+int lr(Node head,int a,int b){
+    int l=1;
+    int r=1;
+    Node t1=head;
+    Node temp=head;
+    while(temp!=null && l!=a){
+        temp=temp.next;
+        l++;
+    }
+    while(t1!=null && r!=b){
+        t1=t1.next;
+        r++;
+    }
+    return temp.data;
+
 }
 }
 
