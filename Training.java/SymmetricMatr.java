@@ -31,9 +31,9 @@ class  SymmetricMatr{
         SymmetricMatr sm = new SymmetricMatr();
         sm.putElement(2,1,10);
         sm.putElement(0,3,5);
-        System.out.println(sm.getElement(1, 2)); // 10
-        System.out.println(sm.getElement(2, 1)); // 10
-        System.out.println(sm.getElement(3, 0)); // 5
-        System.out.println(sm.getElement(0, 3)); // 5
+        System.out.println(sm.getElement(1, 2));
+        System.out.println(sm.getElement(2, 1)); 
+        System.out.println(sm.getElement(3, 0)); 
+        System.out.println(sm.getElement(0, 3)); 
     }
 }

@@ -1,3 +1,4 @@
+import java.util.*;
 public class TreeOperations {
 
     static class Node {
@@ -76,12 +77,18 @@ public class TreeOperations {
         if(root.data<=min || root.data>=max)return false;
         return validateBST(root.left,min,root.data) && validateBST(root.right,root.data,max);
     }
-    static Node LCA(Node root,int p,int q){
-        if(root==null)return null;
-        if(root.data>p&&root.data>q) return LCA(root.left,p,q);
-        if(root.data<p&&root.data<q) return LCA(root.right,p,q);
-        return root;
+    // static Node LCA(Node root,int p,int q){
+    //     if(root==null)return null;
+    //     if(root.data>p&&root.data>q) return LCA(root.left,p,q);
+    //     if(root.data<p&&root.data<q) return LCA(root.right,p,q);
+    //     return root;
         
+    // }
+    static Node LCA(Node root,int p,int q){
+        if(root==null) return null;
+        if(root.data>p && root.data>q) return LCA(root.left,p,q);
+        if(root.data<p && root.data<q) return LCA(root.right,p,q);
+        return root;
     }
     static Node findNode(Node root,int key){
         if(root==null)return null;
@@ -124,6 +131,16 @@ public class TreeOperations {
 
     return root;
     }
+    static void leftView(Node root,int level,ArrayList<Integer> l){
+        if(root==null)return;
+        
+        if(l.size()==level){
+            l.add(root.data);
+        }
+        leftView(root.left,level+1,l);
+        leftView(root.right,level+1,l);
+        
+    }
     public static void main(String[] args) {
         int[] values = {10, 5, 15, 3, 7, 12, 18, 1, 4,5,23,2,5};
         int[] a={1,2,3,4,5,6};
@@ -140,5 +157,12 @@ public class TreeOperations {
         System.out.println("Is the given tree a valid BST "+validateBST(root,Long.MIN_VALUE,Long.MAX_VALUE));
         Node result=LCA(root,2,8);
         System.out.println("Lowest Common Ancestor "+result.data);
+        System.out.println("LeftView");
+        ArrayList<Integer> l=new ArrayList<>();
+        leftView(root,0,l);
+        for(int i=0;i<l.size();i++){
+            System.out.println(l.get(i)+" ");
+        }
+
     }
 }
