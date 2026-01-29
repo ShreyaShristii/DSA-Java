@@ -42,7 +42,7 @@ class ArrayQueue{
             System.out.println("Queue is full you guysss!!");
         }
     }
-    public int pop(){
+    synchronized public int pop(){
         if(front==-1) {
             System.out.println("Queue underflow");
             return -1;

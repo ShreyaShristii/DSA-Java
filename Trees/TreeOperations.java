@@ -141,10 +141,38 @@ public class TreeOperations {
         leftView(root.right,level+1,l);
         
     }
+    static void allPath(Node root,String s){
+        if(root==null)return ;
+        s+=root.data;
+        s+=" ";
+        if(root.left==null && root.right==null)System.out.println(s+" ");
+        allPath(root.right,s);
+        allPath(root.left,s);
+
+    }
+     static void pathToKey(Node root,String s,int key){
+        if(root==null)return ;
+        s+=root.data;
+        s+=" ";
+        //if(root.left==null && root.right==null)System.out.println(s+" ");
+        if(root.data==key)System.out.println(s+ " ");
+        pathToKey(root.right,s,key);
+        pathToKey(root.left,s,key);
+
+    }
+    static void nodeLevel(Node root,int l,int key){
+        if(root==null)return ;
+        if(root.data==key)System.out.println(l);
+        nodeLevel(root.right,l+1,key);
+        nodeLevel(root.left,l+1,key);
+        
+    }
     public static void main(String[] args) {
         int[] values = {10, 5, 15, 3, 7, 12, 18, 1, 4,5,23,2,5};
         int[] a={1,2,3,4,5,6};
+        int[] b={20,11,2,6,32,1,4,16,19,5};
         Node root = buildBST(values);
+        Node Treeroot=buildBST(b);
         System.out.println("BST created successfully!");
         System.out.println("Total number of nodes in the tree are: "+countNodes(root));
         System.out.println("Number of leaf Nodes in the tree are: "+leafNodes(root));
@@ -163,6 +191,12 @@ public class TreeOperations {
         for(int i=0;i<l.size();i++){
             System.out.println(l.get(i)+" ");
         }
+        System.out.println("All the paths from root to leaf: ");
+        allPath(Treeroot,"");
+        System.out.println("Path till the given key is ");
+        pathToKey(Treeroot,"",4);
+        System.out.println("Level of the given key is ");
+        nodeLevel(root,0,23);
 
     }
 }
