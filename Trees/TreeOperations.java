@@ -154,7 +154,6 @@ public class TreeOperations {
         if(root==null)return ;
         s+=root.data;
         s+=" ";
-        //if(root.left==null && root.right==null)System.out.println(s+" ");
         if(root.data==key)System.out.println(s+ " ");
         pathToKey(root.right,s,key);
         pathToKey(root.left,s,key);
@@ -166,6 +165,17 @@ public class TreeOperations {
         nodeLevel(root.right,l+1,key);
         nodeLevel(root.left,l+1,key);
         
+    }
+    static void BFS(Node root){
+        if(root==null)return;
+        Queue<Node> q=new java.util.LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            Node curr=q.poll();
+            System.out.print(curr.data+" ");
+            if(curr.left!=null)q.add(curr.left);
+            if(curr.right!=null)q.add(curr.right);
+        }
     }
     public static void main(String[] args) {
         int[] values = {10, 5, 15, 3, 7, 12, 18, 1, 4,5,23,2,5};
@@ -197,6 +207,8 @@ public class TreeOperations {
         pathToKey(Treeroot,"",4);
         System.out.println("Level of the given key is ");
         nodeLevel(root,0,23);
+        System.out.println("Breadth First Search");
+        BFS(root);
 
     }
 }
