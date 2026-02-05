@@ -48,4 +48,28 @@ public class TreeBFSoperations {
             if(curr.right!=null)q.add(curr.right);
         }
     }
+    static void zigzag(Node root,ArrayList<ArrayList<Integer>> l){
+        if(root==null)return;
+        Queue<Node> q=new ArrayDeque<>();
+        q.add(root);
+        boolean lr=true;
+        while(!q.isEmpty()){
+            int s=q.size();
+            ArrayList<Integer> level=new ArrayList<>();
+            for(int i=0;i<s;i++){
+                Node curr=q.poll();
+                if(lr){
+                    level.add(curr.data);
+            }
+            else{
+                level.add(0,curr.data);
+                if(curr.left!=null)q.add(curr.left);
+                if(curr.right!=null)q.add(curr.right);
+            }
+            l.add(level);
+            lr=!lr;
+        }
+
+        }
+    }
 }
